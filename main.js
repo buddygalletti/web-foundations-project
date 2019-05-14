@@ -63,11 +63,22 @@ const prizeTemplate = function(data, prize) {
   }
 }
 
+const buttonTemplate = function(data, user) {
+  const prizeCounters = Object.keys(data.customers[user]);
+  const mapped = prizeCounters.map(function(prize){
+    return `
+    <div class='button-row'>
+      <p><button data-action='dec'>-</button>
+      ${prize} ${data.customers[user][prize]}
+      <button data-action='inc'>+</button></p><br>
+    </div>
+    `
+  });
+  return mapped.join('');
+}
+
 const userTemplate = function(data, user) {
   const users = Object.keys(data.customers);
-  const prizeCounters = Object.keys(data.customers[user]);
-  const div = document.querySelector('.counter-container');
-  console.log(prizeCounters);
   if(users.includes(user)){
     return `
       <div class='user-card'>
@@ -75,11 +86,13 @@ const userTemplate = function(data, user) {
           ${user}
         </div>
         <div class='counter-container'>
+          ${buttonTemplate(data, user)}
         </div>
       </div>
     `
   }
 }
+
 
 
 function renderPrizes() {
@@ -92,5 +105,11 @@ function renderUsers() {
 
 }
 
+
+
+
+
+
 renderPrizes();
 renderUsers();
+
