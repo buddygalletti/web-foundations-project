@@ -90,16 +90,21 @@ h1 {
 
 .button-row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   color: dodgerblue;
 }
 
-/* button {
+button {
   display: flex;
+  /* flex: 1; */
+  background-color: dodgerblue;
+  color: white;
 }
-*/
+
 
 p {
+  display: flex;
+  /* flex: 8; */
   margin: 0;
 }
 
