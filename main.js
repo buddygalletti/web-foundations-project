@@ -43,3 +43,28 @@ body.appendChild(flexBox2).classList.add('flex-container');
 
 
 
+const prizeTemplate = function(data, prize) {
+  prizes = Object.keys(data.prizes);
+  if(prizes.includes(prize)){
+    return `
+      <div class='prize-card'>
+        <div class='blue'>
+          ${prize}
+        </div>
+        <div class='circle-container'>
+          <div class='circle'>
+            ${data.prizes[prize]}
+          </div>
+        </div>
+      </div>
+    `
+  }
+}
+
+
+function renderPrizes() {
+  flexBox1.innerHTML = prizeTemplate(data, 'Foo') + prizeTemplate(data, 'Bar') + prizeTemplate(data, 'Bazz');
+
+}
+
+renderPrizes();

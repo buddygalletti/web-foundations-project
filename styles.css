@@ -14,3 +14,63 @@ h1 {
   justify-content: center;
   color: dodgerblue;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.prize-card {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 110px;
+  border: 1px solid dodgerblue;
+}
+
+.blue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: dodgerblue;
+  color: white;
+  height: 50px;
+  width: 50px;
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .prize-card {
+    margin: 20px;
+  }
+}
