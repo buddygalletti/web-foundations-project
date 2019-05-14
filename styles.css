@@ -1,1 +1,16 @@
+#header {
+  display: flex;
+  justify-content: flex-start;
+  color: dodgerblue;
+  border-bottom: 1px solid dodgerblue;
+}
 
+h1 {
+  margin: 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: center;
+  color: dodgerblue;
+}
