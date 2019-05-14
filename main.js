@@ -94,16 +94,20 @@ const userTemplate = function(data, user) {
 }
 
 
-
+// whenever the data set is modified, you should call these so everything gets updated
 function renderPrizes() {
   flexBox1.innerHTML = prizeTemplate(data, 'Foo') + prizeTemplate(data, 'Bar') + prizeTemplate(data, 'Bazz');
 
 }
-
 function renderUsers() {
   flexBox2.innerHTML = userTemplate(data, 'Moe') + userTemplate(data, 'Larry') + userTemplate(data, 'Curly');
 
 }
+
+
+
+// do everything with the event listeners
+
 
 
 
