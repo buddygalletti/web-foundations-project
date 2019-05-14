@@ -23,7 +23,7 @@ const data = {
   }
 };
 
-
+// selecting the body and creating all of the containers
 const body = document.querySelector('body');
 const header = document.createElement('div');
 const sectionHeader1 = document.createElement('div');
@@ -31,10 +31,12 @@ const sectionHeader2 = document.createElement('div');
 const flexBox1 = document.createElement('div');
 const flexBox2 = document.createElement('div');
 
+// adding header html to containers that need them
 header.innerHTML = '<h1>Acme Prizes</h1>';
 sectionHeader1.innerHTML = '<h2>Prize Inventory</h2>'
 sectionHeader2.innerHTML = '<h2>Customers</h2>'
 
+// appending containers to body in the correct order and adding attributes
 body.appendChild(header).setAttribute('id', 'header');
 body.appendChild(sectionHeader1).classList.add('section-header');
 body.appendChild(flexBox1).classList.add('flex-container');
@@ -42,9 +44,9 @@ body.appendChild(sectionHeader2).classList.add('section-header');
 body.appendChild(flexBox2).classList.add('flex-container');
 
 
-
+// using temp lit to create prize cards
 const prizeTemplate = function(data, prize) {
-  prizes = Object.keys(data.prizes);
+  const prizes = Object.keys(data.prizes);
   if(prizes.includes(prize)){
     return `
       <div class='prize-card'>
@@ -61,10 +63,34 @@ const prizeTemplate = function(data, prize) {
   }
 }
 
+const userTemplate = function(data, user) {
+  const users = Object.keys(data.customers);
+  const prizeCounters = Object.keys(data.customers[user]);
+  const div = document.querySelector('.counter-container');
+  console.log(prizeCounters);
+  if(users.includes(user)){
+    return `
+      <div class='user-card'>
+        <div class='blue-text'>
+          ${user}
+        </div>
+        <div class='counter-container'>
+        </div>
+      </div>
+    `
+  }
+}
+
 
 function renderPrizes() {
   flexBox1.innerHTML = prizeTemplate(data, 'Foo') + prizeTemplate(data, 'Bar') + prizeTemplate(data, 'Bazz');
 
 }
 
+function renderUsers() {
+  flexBox2.innerHTML = userTemplate(data, 'Moe') + userTemplate(data, 'Larry') + userTemplate(data, 'Curly');
+
+}
+
 renderPrizes();
+renderUsers();
