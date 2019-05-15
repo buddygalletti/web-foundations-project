@@ -14,6 +14,11 @@ const data = {
       Foo: 0,
       Bar: 0,
       Bazz: 0
+    },
+    Buddy: {
+      Foo: 0,
+      Bar: 0,
+      Bazz: 0
     }
   },
   prizes: {
@@ -35,6 +40,8 @@ const flexBox2 = document.createElement('div');
 header.innerHTML = '<h1>Acme Prizes</h1>';
 sectionHeader1.innerHTML = '<h2>Prize Inventory</h2>'
 sectionHeader2.innerHTML = '<h2>Customers</h2>'
+flexBox1.setAttribute('id', 'prizes');
+flexBox2.setAttribute('id', 'users')
 
 // appending containers to body in the correct order and adding attributes
 body.appendChild(header).setAttribute('id', 'header');
@@ -49,12 +56,12 @@ const prizeTemplate = function(data, prize) {
   const prizes = Object.keys(data.prizes);
   if(prizes.includes(prize)){
     return `
-      <div class='prize-card'>
+      <div class='prize-card ${prize}'>
         <div class='blue'>
           ${prize}
         </div>
         <div class='circle-container'>
-          <div class='circle'>
+          <div class=${data.prizes[prize] === 0 ? 'circle-red':'circle-blue'}>
             ${data.prizes[prize]}
           </div>
         </div>
@@ -68,9 +75,9 @@ const buttonTemplate = function(data, user) {
   const mapped = prizeCounters.map(function(prize){
     return `
     <div class='button-row'>
-      <p><button data-action='dec'>-</button>
+      <p><button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}>-</button>
       ${prize} ${data.customers[user][prize]}
-      <button data-action='inc'>+</button></p><br>
+      <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}>+</button></p><br>
     </div>
     `
   });
@@ -81,7 +88,7 @@ const userTemplate = function(data, user) {
   const users = Object.keys(data.customers);
   if(users.includes(user)){
     return `
-      <div class='user-card'>
+      <div id=${user} class='user-card'>
         <div class='blue-text'>
           ${user}
         </div>
@@ -96,24 +103,45 @@ const userTemplate = function(data, user) {
 
 // whenever the data set is modified, you should call these so everything gets updated
 function renderPrizes() {
-  flexBox1.innerHTML = prizeTemplate(data, 'Foo') + prizeTemplate(data, 'Bar') + prizeTemplate(data, 'Bazz');
-
+  const prizes = Object.keys(data.prizes);
+  const mappedHTML = prizes.map(function(prize){
+    return prizeTemplate(data, prize);
+  });
+  flexBox1.innerHTML = mappedHTML.join(''); 
 }
 function renderUsers() {
-  flexBox2.innerHTML = userTemplate(data, 'Moe') + userTemplate(data, 'Larry') + userTemplate(data, 'Curly');
-
+  const customers = Object.keys(data.customers);
+  const mappedHTML = customers.map(function(customer){
+    return userTemplate(data, customer);
+  });
+  flexBox2.innerHTML = mappedHTML.join(''); 
 }
 
-
+function render() {
+  renderPrizes();
+  renderUsers();
+}
 
 // do everything with the event listeners
+const prizesDiv = document.querySelector('#prizes');
+const usersDiv = document.querySelector('#users');
+
+usersDiv.addEventListener('click', function(ev){
+  const action = ev.target.getAttribute('data-action');
+  const classes = [ ev.target.classList ]
+  const customer = classes[0][0];
+  const prize = classes[0][1];
+  // console.log(classes[0][0]);
+  if (action === 'inc') {
+    data.customers[customer][prize]++;
+    data.prizes[prize]--;
+  }
+  if (action === 'dec') {
+    data.customers[customer][prize]--;
+    data.prizes[prize]++;
+  }
+  render();
+});
 
 
-
-
-
-
-
-renderPrizes();
-renderUsers();
-
+render();
