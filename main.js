@@ -77,9 +77,9 @@ const buttonTemplate = function(data, user) {
   const mapped = prizeCounters.map(function(prize){
     return `
     <div class='button-row'>
-      <button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}><i class="fas fa-minus"></i></button>
+      <button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}>-</button>
       <p>${prize} ${data.customers[user][prize]}</p>
-      <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}><i class="fas fa-plus"></i></button>
+      <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}>+</button>
     </div>
     `
   });
@@ -129,6 +129,10 @@ const prizesDiv = document.querySelector('#prizes');
 const usersDiv = document.querySelector('#users');
 
 usersDiv.addEventListener('click', function(ev){
+  // if(ev.target === '<i class="fas fa-plus"></i>' || ev.target === '<i class="fas fa-minus"></i>') {
+  //   ev.target = ev.currentTarget;
+  // }
+  console.log(ev.target);
   const action = ev.target.getAttribute('data-action');
   const classes = [ ev.target.classList ];
   const customer = classes[0][0];

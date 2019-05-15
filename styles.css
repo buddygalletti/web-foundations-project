@@ -26,12 +26,14 @@ h2 {
 
 .flex-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
 .prize-card {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   height: 150px;
   width: 110px;
   border: 1px solid dodgerblue;
@@ -80,6 +82,7 @@ h2 {
   flex-direction: column;
   height: 180px;
   width: 150px;
+  margin: 20px;
   /* border: 1px solid dodgerblue; */
 }
 
