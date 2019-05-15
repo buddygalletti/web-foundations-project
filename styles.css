@@ -83,7 +83,6 @@ h2 {
   height: 180px;
   width: 150px;
   margin: 20px;
-  /* border: 1px solid dodgerblue; */
 }
 
 .blue-text {
@@ -130,7 +129,6 @@ button[disabled] {
 
 p {
   display: flex;
-  /* flex: 8; */
   margin: 0;
 }
 

@@ -38,8 +38,8 @@ const flexBox2 = document.createElement('div');
 
 // adding header html to containers that need them
 header.innerHTML = '<h1>Acme Prizes</h1>';
-sectionHeader1.innerHTML = '<h2>Prize Inventory</h2>'
-sectionHeader2.innerHTML = '<h2>Customers</h2>'
+sectionHeader1.innerHTML = '<h2>Prize Inventory</h2>';
+sectionHeader2.innerHTML = '<h2>Customers</h2>';
 
 // add id's to the flex-containers
 flexBox1.setAttribute('id', 'prizes');
