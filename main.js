@@ -76,11 +76,11 @@ const buttonTemplate = function(data, user) {
   const prizeCounters = Object.keys(data.customers[user]);
   const mapped = prizeCounters.map(function(prize){
     return `
-    <div class='button-row'>
-      <button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}>-</button>
-      <p>${prize} ${data.customers[user][prize]}</p>
-      <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}>+</button>
-    </div>
+      <div class='button-row'>
+        <button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}>-</button>
+        <p>${prize} ${data.customers[user][prize]}</p>
+        <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}>+</button>
+      </div>
     `
   });
   return mapped.join('');
