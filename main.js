@@ -40,8 +40,10 @@ const flexBox2 = document.createElement('div');
 header.innerHTML = '<h1>Acme Prizes</h1>';
 sectionHeader1.innerHTML = '<h2>Prize Inventory</h2>'
 sectionHeader2.innerHTML = '<h2>Customers</h2>'
+
+// add id's to the flex-containers
 flexBox1.setAttribute('id', 'prizes');
-flexBox2.setAttribute('id', 'users')
+flexBox2.setAttribute('id', 'users');
 
 // appending containers to body in the correct order and adding attributes
 body.appendChild(header).setAttribute('id', 'header');
