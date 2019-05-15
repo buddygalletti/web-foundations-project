@@ -107,6 +107,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   color: dodgerblue;
+  width: 100%;
 }
 
 button {
@@ -114,6 +115,8 @@ button {
   /* flex: 1; */
   background-color: dodgerblue;
   color: white;
+  height: 25px;
+  width: 25px;
 }
 
 button[disabled] {

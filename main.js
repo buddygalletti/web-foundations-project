@@ -77,9 +77,9 @@ const buttonTemplate = function(data, user) {
   const mapped = prizeCounters.map(function(prize){
     return `
     <div class='button-row'>
-      <p><button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}>-</button>
-      ${prize} ${data.customers[user][prize]}
-      <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}>+</button></p><br>
+      <button class='${user} ${prize}' data-action='dec' ${data.customers[user][prize] === 0 ? 'disabled':''}><i class="fas fa-minus"></i></button>
+      <p>${prize} ${data.customers[user][prize]}</p>
+      <button class='${user} ${prize}' data-action='inc' ${data.prizes[prize] === 0 ? 'disabled':''}><i class="fas fa-plus"></i></button>
     </div>
     `
   });
@@ -118,7 +118,7 @@ function renderUsers() {
   });
   flexBox2.innerHTML = mappedHTML.join(''); 
 }
-
+// condensed into one func
 function render() {
   renderPrizes();
   renderUsers();
@@ -130,10 +130,9 @@ const usersDiv = document.querySelector('#users');
 
 usersDiv.addEventListener('click', function(ev){
   const action = ev.target.getAttribute('data-action');
-  const classes = [ ev.target.classList ]
+  const classes = [ ev.target.classList ];
   const customer = classes[0][0];
   const prize = classes[0][1];
-  // console.log(classes[0][0]);
   if (action === 'inc') {
     data.customers[customer][prize]++;
     data.prizes[prize]--;
