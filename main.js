@@ -109,14 +109,14 @@ function renderPrizes() {
   const mappedHTML = prizes.map(function(prize){
     return prizeTemplate(data, prize);
   });
-  flexBox1.innerHTML = mappedHTML.join(''); 
+  flexBox1.innerHTML = mappedHTML.join('');
 }
 function renderUsers() {
   const customers = Object.keys(data.customers);
   const mappedHTML = customers.map(function(customer){
     return userTemplate(data, customer);
   });
-  flexBox2.innerHTML = mappedHTML.join(''); 
+  flexBox2.innerHTML = mappedHTML.join('');
 }
 // condensed into one func
 function render() {
@@ -129,10 +129,6 @@ const prizesDiv = document.querySelector('#prizes');
 const usersDiv = document.querySelector('#users');
 
 usersDiv.addEventListener('click', function(ev){
-  // if(ev.target === '<i class="fas fa-plus"></i>' || ev.target === '<i class="fas fa-minus"></i>') {
-  //   ev.target = ev.currentTarget;
-  // }
-  console.log(ev.target);
   const action = ev.target.getAttribute('data-action');
   const classes = [ ev.target.classList ];
   const customer = classes[0][0];
